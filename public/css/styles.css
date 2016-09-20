@@ -1,0 +1,127 @@
+html, body {
+
+}
+
+body {
+	background-color: #E5FCF5 !important;
+	font-family: "Rockwell",sans-serif !important;
+}
+
+.auth-box {
+	text-align: center;
+	background-color: #77B6EA;
+	border: 1px solid #070156;
+	box-shadow:  2px 2px 5px black;	
+	position: relative;
+    height: 210px;
+    width: 500px;
+    top: calc(50vh - 160px);
+    margin-left: calc(50vw - 250px);
+}
+
+select {
+	margin: 2vh;
+	width: 90px;
+	background-color: #E5FCF5;
+	font-family: "Rockwell",sans-serif;
+	border: 1px solid #070156;
+	outline: none;
+}
+
+button {
+	width: 90px;
+	background-color: #E5FCF5;
+	font-family: "Rockwell",sans-serif;
+	border: 1px solid #070156;
+	outline: none;
+}
+
+button:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+#top-panel {
+	border-bottom: 1px solid #070156;
+	position: fixed;
+	top:0;
+	right: 0;
+	left: 0;
+	background-color: #77B6EA;
+	height: 30px;
+	box-shadow:  0px 1px 2px black;
+}
+
+#comments {
+	margin-top: 45px;
+	margin-bottom: 120px;
+}
+
+#bottom-panel {
+	position: fixed;
+	background-color: #77B6EA;
+	border-top: 1px solid #070156;
+	height: 60px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	box-shadow:  0px -1px 1px black;
+}
+
+#user-input {
+	height: 
+}
+
+#logout {
+	float: right;
+    margin: 4px 40px 0 0;
+}
+
+#clear-button {
+	float: right;
+	margin: 2px 9px 0 0;
+}
+
+#change-color-button {
+	float: right;
+	margin: 2px 9px 0 0;
+}
+
+.login-button {	
+    margin-bottom: 35px;
+}
+.comment {
+	border: 1px solid black;
+	border-radius: 3px;
+	width: 70%;
+	margin: 3px auto 0 auto;
+	padding: 5px;
+}
+
+.name {
+	float: left;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.date {
+	float: right;
+	margin-bottom: 5px;
+}
+
+.text {
+	clear: both;
+	margin-bottom: 0;
+	word-wrap: break-word;
+}
+
+.reg-input {
+	width: 260px;
+} 
+
+.login-input {
+	width: 260px;
+}

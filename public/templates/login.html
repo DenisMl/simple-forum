@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Authorization</title>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+	<div class="auth-box">
+		<p>Authorization</p><br>
+		<div class="auth-message" id="login-message"></div>
+		<form id="login-form" onsubmit="login(event)">
+			<label for="login-name">Username:</label>
+			<input class="login-input" id="login-name" type="username" placeholder="Enter your name" autofocus><br>
+			<label for="login-password">Password:</label>
+			<input class="login-input" id="login-password" type="password" placeholder="Enter your password"><br>
+			<button class="login-button" type="submit">Log in</button>
+		</form>
+		<label for="reg-link">don't have an account?</label>
+		<a id="reg-link" href="registration.html"> Sign Up</a>
+	</div>
+</body>
+<script src="../js/login.js"></script>
+</html>

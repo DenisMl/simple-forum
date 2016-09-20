@@ -1,0 +1,25 @@
+<html><!DOCTYPE html>
+<html>
+<head>
+	<title>Comments</title>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div id="top-panel">
+		<a id="logout" href="login.html">LOGOUT</a>
+		<button id='clear-button' onclick="clearComments()">Clear</button>
+		<input id="change-color-button" type="color" onchange="changeColor()">
+	</div>
+	<div class="container" id="comments"></div>
+	
+    <div id="bottom-panel">
+    	<form class="container" id="input-comment" onsubmit="sendComment(event)">
+        	<input class="col-xs-10" id="user-input" type="text" size="30" placeholder="Enter your comment" autofocus>
+        	<button class="col-xs-2" type="submit">Send</button>        	
+    	</form>
+    </div>
+</body>
+<script src='http://momentjs.com/downloads/moment.js'></script>
+<script src='../js/app.js'></script>
+</html>
