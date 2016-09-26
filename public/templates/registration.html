@@ -3,21 +3,19 @@
 <head>
 	<title>Registration</title>
 	<link rel="stylesheet" type="text/css" href="../css/styles.css">
-	
+
 </head>
 <body>
 	<div id="reg-box" class="auth-box">
 		<p>Registration</p><br>
 		<div class="auth-message" id="reg-message"></div>
-		<form id="reg-form" onsubmit="register(event)">
+		<form id="reg-form"  method="post" action="/signup">
 			<label for="reg-name">Username:</label>
-			<input class="reg-input" id="reg-name" type="username" placeholder="Enter your name" autofocus><br>
+			<input class="reg-input" id="reg-name" name="nick" type="username" placeholder="Enter your name" autofocus><br>
 			<label for="reg-password">Password:</label>
-			<input class="reg-input" id="reg-password" type="password" placeholder="Enter your password"><br>
-			<label for="reg-password-confirm">Confirm password:</label>
-			<input class="reg-input" id="reg-password-confirm" type="password" placeholder="Confirm your password"><br>
+			<input class="reg-input" id="reg-password" name="password" type="password" placeholder="Enter your password"><br>
 			<label for="reg-color">Pick color:</label>
-			<input id="reg-color" type="color"><br>
+			<input id="reg-color" name="color" type="color"><br>
 			<button class="login-button" type="submit">Sign up</button>
 		</form>
 	</div>

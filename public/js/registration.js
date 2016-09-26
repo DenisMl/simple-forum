@@ -2,7 +2,7 @@ function register(event) {
 	event.preventDefault();
 	const name = document.getElementById('reg-name').value;
 	const password = document.getElementById('reg-password').value;
-	const confPassword = document.getElementById('reg-password-confirm').value;	
+	const confPassword = document.getElementById('reg-password-confirm').value;
 	if (!localStorage.getItem('users')) {
 		localStorage.setItem('users', JSON.stringify({}));
 	}
@@ -23,9 +23,9 @@ function register(event) {
 		const colorObj = JSON.parse(localStorage.getItem('color'));
 		colorObj[name] = color;
 		localStorage.setItem('color', JSON.stringify(colorObj));
-		window.location.href = 'login.html';
+		window.location.href = '/login';
 	}
-	
+
 }
 
-//TODO: 
+//TODO:

@@ -1,0 +1,33 @@
+<html><!DOCTYPE html>
+<html>
+<head>
+	<title>Gallery</title>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div id="top-panel">
+		<a id="logout" href="/signout">LOGOUT</a>
+    <form class="container" onsubmit="browsePicture(event)">
+        <input class="col-xs-9" id="pic-url" type="text" size="30" autofocus>
+        <button class="send-button" type="submit">Send</button>
+    </form>
+	</div>
+	<div class="container" id="images"></div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+</div>
+  </div>
+</body>
+<script src='http://momentjs.com/downloads/moment.js'></script>
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src='../js/gallery.js'></script>
+</html>

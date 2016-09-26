@@ -11,7 +11,7 @@ body {
 	text-align: center;
 	background-color: #77B6EA;
 	border: 1px solid #070156;
-	box-shadow:  2px 2px 5px black;	
+	box-shadow:  2px 2px 5px black;
 	position: relative;
     height: 210px;
     width: 500px;
@@ -47,12 +47,19 @@ button:active {
 #top-panel {
 	border-bottom: 1px solid #070156;
 	position: fixed;
+	z-index: 3;
 	top:0;
 	right: 0;
 	left: 0;
 	background-color: #77B6EA;
 	height: 30px;
 	box-shadow:  0px 1px 2px black;
+}
+
+.send-button {
+	width: 70px;
+		float: right;
+		margin: 2px 5px 0 0;
 }
 
 #comments {
@@ -68,16 +75,16 @@ button:active {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	box-shadow:  0px -1px 1px black;
+	<-box-shadow:  0px -1px 1px black;->
 }
 
 #user-input {
-	height: 
+	height:
 }
 
 #logout {
 	float: right;
-    margin: 4px 40px 0 0;
+  margin: 4px 40px 0 0;
 }
 
 #clear-button {
@@ -90,7 +97,7 @@ button:active {
 	margin: 2px 9px 0 0;
 }
 
-.login-button {	
+.login-button {
     margin-bottom: 35px;
 }
 .comment {
@@ -120,8 +127,34 @@ button:active {
 
 .reg-input {
 	width: 260px;
-} 
+}
 
 .login-input {
 	width: 260px;
+}
+
+.image-preview > img {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+.image-preview {
+	padding: 15px;
+	text-align: center;
+}
+
+#images {
+	margin-top: 50px;
+}
+
+.image-container {
+	width: 400px;
+	margin: auto;
+}
+
+.image-container > img {
+	width: 100%;
+
 }
