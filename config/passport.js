@@ -65,7 +65,6 @@ module.exports = function(passport) {
                 var newUser = new User();
                 newUser.nick = nick.toLowerCase();
                 newUser.password = newUser.generateHash(password);
-                newUser.color = req.body.color;
 
                 newUser.save(function(err) {
                     if (err)

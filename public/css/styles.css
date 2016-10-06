@@ -62,11 +62,6 @@ button:active {
 		margin: 2px 5px 0 0;
 }
 
-#comments {
-	margin-top: 45px;
-	margin-bottom: 120px;
-}
-
 #bottom-panel {
 	position: fixed;
 	background-color: #77B6EA;
@@ -156,5 +151,161 @@ button:active {
 
 .image-container > img {
 	width: 100%;
+}
 
+.col-xs-4 {
+	float: none !important;
+}
+
+.error {
+	border-color: red;
+	transition: border-color .5s;
+}
+
+#myModal > .modal-dialog > .modal-content {
+	position: relative;
+	border-radius: 0;
+}
+
+#myModal > .modal-dialog > .modal-content > .modal-body {
+  position: relative;
+	padding: 0;
+}
+
+#image-container {
+	float: left;
+  width: calc(100% - 250px);
+}
+
+#image-container > img {
+	width: 100%;
+	height: auto;
+}
+
+#comment-box {
+	position: absolute;
+  right: 0;
+  width: 250px;
+	height: 100%;
+	overflow: hidden;
+}
+
+#comments {
+	height: calc(100% - 97px);
+	overflow-x: hidden;
+  overflow-y: scroll;
+	margin-bottom: -1px;
+}
+
+#comments > div > div {
+	clear: both;
+}
+
+#comments > div {
+	border-bottom: 1px solid rgb(220, 220, 220);
+  padding: 5px 5px 10px 15px;
+	background-color: white;
+}
+
+#comment-header {
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+  padding-bottom: 5px;
+	height: 55px;
+	box-shadow: 0 -51px 58px 26px #333;
+	position: relative;
+}
+
+#pic-popup-dialog {
+	min-width: 700px;
+}
+
+#input-comment {
+	width: 195px;
+	height: 30px;
+	border: none;
+}
+
+#input-comment:focus {
+	outline: none;
+}
+
+#add-comment-button {
+	width: 55px;
+	height: 28px;
+	margin: -4px;
+	background: rgba(0, 0, 0, 0.1) ;
+}
+
+#picture-author {
+	font-size: 20px;
+	margin-left: 15px;
+}
+
+#picture-date {
+	float: right;
+	color: #a9a9a9;
+	font-weight: 600;
+	margin: 6px;
+}
+
+#picture-likes {
+	clear: both;
+  float: left;
+  margin: -4px 0 0 15px;
+}
+
+#comment-text {
+	clear: both;
+  float: left;
+	word-wrap: break-word;
+	width: 100%;
+}
+
+#comment-date {
+  float: right;
+  color: #a9a9a9;
+}
+
+#comment-author {
+	font-size: 17px;
+  margin-right: 17px;
+	float: left;
+	clear: both;
+	margin-bottom: 6px;
+}
+
+.fa-heart::before {
+	content: "\f004";
+	color: rgb(182, 182, 182);
+	font-size: 22px;
+	margin: 0 5px 5px 10px;
+}
+
+.fa-heart {
+	float: left;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.fa-heart.liked::before {
+	color: rgb(251, 92, 92);
+}
+
+#comment-footer {
+	padding-top: 5px;
+	border-top: 1px solid rgb(220, 220, 220);
+	box-shadow: -5px 33px 43px 15px #333;
+  height: 43px;
+}
+
+::-webkit-scrollbar-track {
+	background-color:#ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color:#9a9a9a;
+}
+
+::-webkit-scrollbar{
+	width: 5px;
 }

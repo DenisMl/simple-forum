@@ -8,12 +8,10 @@ var imageSchema = new mongoose.Schema({
 		text: String,
 		date: Date
 	}],
-	like: [{
-		author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-	}],
+	likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	date: Date,
 	tags: String,
 	title: String,
-},{ versionKey: false });
+}, { versionKey: false });
 
 module.exports = mongoose.model('Image', imageSchema);
