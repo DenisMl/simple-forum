@@ -1,3 +1,5 @@
+'use strict';
+
 var User = require('../models/user');
 var Image = require('../models/image');
 var fs = require('fs');
@@ -5,10 +7,20 @@ var apiController = {};
 
 apiController.addPicture = function (req, res) {
 	var newImage = new Image();
+	const title = req.body.title;
 	newImage.url = req.body.url;
 	newImage.author = req.user;
-	newImage.title = req.body.title;
 	newImage.date = new Date();
+  const regexp = /(\s|^)\#\w\w+\b/gm;
+  const tags = title.match(regexp);
+  if (tags) {
+    newImage.tags = tags.map(s => {return s.trim().substring(1)});
+	}
+	newImage.comments.push({
+		author: req.user,
+		text: title,
+		date: new Date(),
+	});
 	newImage.save(function(err){
 		if (err) return console.error(err);
     res.send({});
@@ -16,9 +28,16 @@ apiController.addPicture = function (req, res) {
 };
 
 apiController.loadPictures = function (req, res) {
-  Image.find({}).exec(function(err, images) {
-    res.send(images);
-  });
+	const tag = req.query.tag;
+	if (tag) {
+		Image.find({'tags': tag}).exec(function(err, images) {
+	    res.send(images);
+	  });
+	} else {
+		Image.find({}).exec(function(err, images) {
+	    res.send(images);
+	  });
+	}
 };
 
 apiController.deleteAllPictures = function (req, res) {

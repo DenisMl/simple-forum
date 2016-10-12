@@ -10,8 +10,7 @@ var imageSchema = new mongoose.Schema({
 	}],
 	likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	date: Date,
-	tags: String,
-	title: String,
+	tags: [String],
 }, { versionKey: false });
 
 module.exports = mongoose.model('Image', imageSchema);

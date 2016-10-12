@@ -9,9 +9,13 @@
 
 <body>
 	<div id="top-panel">
+		<div id="tags-search">
+			<span id="tags-search-info">tag</span>
+			<button onclick="cancelTagSearch(null)">Cancel</button>
+		</div>
 		<a id="logout" href="/signout">LOGOUT</a>
-		<button class="send-button" data-toggle="modal" onclick="callPopUp()" data-target="#add-PopUp">Add</button>
-		<button class="send-button" onclick="removeAllImages()">Remove All</button>
+		<button class="send-button btn btn-primary" data-toggle="modal" onclick="callPopUp()" data-target="#add-PopUp">Add</button>
+		<button class="send-button btn btn-primary" onclick="removeAllImages()">Remove</button>
 	</div>
 	<div class="container" id="images"></div>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

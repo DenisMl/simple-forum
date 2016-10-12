@@ -3,20 +3,19 @@ html, body {
 }
 
 body {
-	background-color: #E5FCF5 !important;
+	background-color: white ;
 	font-family: "Rockwell",sans-serif !important;
 }
 
 .auth-box {
 	text-align: center;
-	background-color: #77B6EA;
-	border: 1px solid #070156;
+	background-color: white;
 	box-shadow:  2px 2px 5px black;
 	position: relative;
-    height: 210px;
-    width: 500px;
-    top: calc(50vh - 160px);
-    margin-left: calc(50vw - 250px);
+  height: 210px;
+  width: 500px;
+  top: calc(50vh - 160px);
+  margin-left: calc(50vw - 250px);
 }
 
 select {
@@ -28,22 +27,6 @@ select {
 	outline: none;
 }
 
-button {
-	width: 90px;
-	background-color: #E5FCF5;
-	font-family: "Rockwell",sans-serif;
-	border: 1px solid #070156;
-	outline: none;
-}
-
-button:hover {
-	background: rgba(0, 0, 0, 0.2);
-}
-
-button:active {
-    background: rgba(0, 0, 0, 0.4);
-}
-
 #top-panel {
 	border-bottom: 1px solid #070156;
 	position: fixed;
@@ -51,26 +34,16 @@ button:active {
 	top:0;
 	right: 0;
 	left: 0;
-	background-color: #77B6EA;
-	height: 30px;
-	box-shadow:  0px 1px 2px black;
+	background-color: white;
+	height: 50px;
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	box-shadow: 0 -51px 58px 26px #333;
 }
 
 .send-button {
 	width: 70px;
-		float: right;
-		margin: 2px 5px 0 0;
-}
-
-#bottom-panel {
-	position: fixed;
-	background-color: #77B6EA;
-	border-top: 1px solid #070156;
-	height: 60px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	<-box-shadow:  0px -1px 1px black;->
+	float: right;
+	margin: 7px 5px 0 0;
 }
 
 #user-input {
@@ -79,7 +52,7 @@ button:active {
 
 #logout {
 	float: right;
-  margin: 4px 40px 0 0;
+  margin: 13px 40px 0 0;
 }
 
 #clear-button {
@@ -128,7 +101,7 @@ button:active {
 	width: 260px;
 }
 
-.image-preview > img {
+.previev-image-container > img {
 	width: 200px;
 	height: 200px;
 	object-fit: cover;
@@ -138,6 +111,34 @@ button:active {
 .image-preview {
 	padding: 15px;
 	text-align: center;
+}
+
+.previev-image-hover {
+	position: absolute;
+	left: 0;
+  top: 0;
+  height: 200px;
+  width: 200px;
+	z-index: 2;
+	opacity: 0;
+	text-align: center;
+	line-height: 200px;
+}
+
+.previev-image-hover:hover {
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: 1;
+}
+
+.previev-image-container {
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	position: relative;
+}
+
+.hover-info {
+	color: white;
 }
 
 #images {
@@ -276,7 +277,6 @@ button:active {
 
 .fa-heart::before {
 	content: "\f004";
-	color: rgb(182, 182, 182);
 	font-size: 22px;
 	margin: 0 5px 5px 10px;
 }
@@ -285,10 +285,12 @@ button:active {
 	float: left;
 	margin-top: 5px;
 	cursor: pointer;
+	color: rgb(182, 182, 182);
 }
 
 .fa-heart.liked::before {
 	color: rgb(251, 92, 92);
+	animation: like .3s;
 }
 
 #comment-footer {
@@ -308,4 +310,29 @@ button:active {
 
 ::-webkit-scrollbar{
 	width: 5px;
+}
+
+#tags-search {
+	position: absolute;
+	visibility: hidden;
+  left: 50px;
+}
+
+.previev-image-hover > .fa-heart, .previev-image-hover > .fa-comment, .previev-image-hover > .hover-info {
+	display: inline-block;
+	font-size: 22px;
+	color: white;
+	float: none;
+	margin: 0 3px;
+}
+
+.previev-image-hover > .fa-heart::before {
+	margin: 0;
+}
+
+@keyframes like {
+    0%   {font-size: 22px;}
+    25%  {font-size: 25px; margin: 0 3px 5px 9px;}
+    50%  {font-size: 25px; margin: 0 3px 5px 9px;}
+    100% {font-size: 22px;}
 }

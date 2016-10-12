@@ -14,16 +14,38 @@ function http(url, type, data, cb) {
 function renderGallery(images) {
   document.getElementById('images').innerHTML = '';
   images.sort((a, b) => a.date < b.date).forEach(function(item) {
+    const block = document.createElement('div');
     const imageContainer = document.createElement('div');
+    const hover = document.createElement('div');
 		const image = document.createElement('img');
+    const likesCount = document.createElement('span');
+    const commentsCount = document.createElement('span');
+    const heartIcon = document.createElement('i');
+    const commentIcon = document.createElement('i');
     image.setAttribute('src', item.url);
-    image.setAttribute('image-id', item._id);
-    image.setAttribute('data-toggle', 'modal');
-    image.setAttribute('data-target', '#myModal');
-    image.addEventListener('click', openImage);
-    imageContainer.className = 'col-lg-3 col-md-3 col-sm-4 col-xs-6 image-preview';
+    hover.setAttribute('image-id', item._id);
+    hover.setAttribute('data-toggle', 'modal');
+    hover.setAttribute('data-target', '#myModal');
+    hover.addEventListener('click', openImage);
+    heartIcon.setAttribute('aria-hidden', 'true');
+    commentIcon.setAttribute('aria-hidden', 'true');
+    likesCount.innerHTML = item.likes.length;
+    commentsCount.innerHTML = item.comments.length;
+    block.className = 'col-lg-3 col-md-3 col-sm-4 col-xs-6 image-preview';
+    imageContainer.className = 'previev-image-container';
+    hover.className = 'previev-image-hover';
+    likesCount.className = 'hover-info';
+    commentsCount.className = 'hover-info';
+    heartIcon.className = 'fa fa-heart';
+    commentIcon.className = 'fa fa-comment';
+    hover.appendChild(heartIcon);
+    hover.appendChild(likesCount);
+    hover.appendChild(commentIcon);
+    hover.appendChild(commentsCount);
+    imageContainer.appendChild(hover);
     imageContainer.appendChild(image);
-		document.getElementById('images').appendChild(imageContainer);
+    block.appendChild(imageContainer);
+		document.getElementById('images').appendChild(block);
   });
 }
 
@@ -37,7 +59,7 @@ function addPicture(event) {
     event.target['input-pic-url'].className = validateUrl ? 'col-xs-4 error' : 'col-xs-4';
     event.target['input-pic-title'].className = validateTitle ? 'col-xs-4 error' : 'col-xs-4';
   } else {
-    http('/api/image', 'POST', { url, title }, loadPictures);
+    http('/api/image', 'POST', { url, title }, () => loadPictures());
     event.target['input-pic-url'].value = '';
     event.target['input-pic-title'].value = '';
     document.getElementById('add-PopUp').click();
@@ -57,9 +79,9 @@ function renderComments({ comments }) {
     author.setAttribute('id', 'comment-author');
     date.setAttribute('id', 'comment-date');
     text.setAttribute('id', 'comment-text');
-    author.innerHTML = [item.author.nick];
+    author.innerHTML = item.author.nick;
     date.innerHTML = (moment(item.date).fromNow(true));
-    text.innerHTML = (item.text);
+    text.innerHTML = item.text.replace(/#(\w+)/g, '<a onclick="loadPictures(`$1`, true); cancelTagSearch(`$1`);">$&</a>');
     comment.appendChild(author);
     comment.appendChild(date);
     comment.appendChild(text);
@@ -91,7 +113,6 @@ function renderLikes({ likes }) {
 
 function renderImage(data) {
   document.getElementById('image-container').innerHTML = '';
-  //document.getElementById('myModalLabel').innerHTML = '';
   document.getElementById('picture-author').innerHTML = '';
   document.getElementById('picture-date').innerHTML = '';
   const image = document.createElement('img');
@@ -102,18 +123,21 @@ function renderImage(data) {
   image.setAttribute('id', 'selected-picture');
   image.setAttribute('image-id', data._id);
   document.getElementById('image-container').appendChild(image);
-  //document.getElementById('myModalLabel').appendChild(title);
   document.getElementById('picture-author').appendChild(author);
   document.getElementById('picture-date').appendChild(date);
   renderComments({ comments: data.comments });
   renderLikes({ likes: data.likes });
 };
 
-function loadPictures() {
-  http('/api/imageList', 'GET', null, renderGallery);
+function loadPictures(q, close) {
+  if (close) {
+    document.getElementById('myModal').click()
+  }
+  const tag = q || '';
+  http(`/api/imageList?tag=${tag}`, 'GET', null, renderGallery);
 };
 
-window.onload = loadPictures;
+loadPictures();
 
 function openImage(e) {
   const id = e.srcElement.getAttribute('image-id');
@@ -126,7 +150,7 @@ function callPopUp() {
 }
 
 function removeAllImages() {
-  http(`/api/imageList`, 'DELETE', null, loadPictures);
+  http(`/api/imageList`, 'DELETE', null, () => loadPictures());
 }
 
 function addComment(event) {
@@ -144,3 +168,16 @@ function like() {
   const id = document.getElementById('selected-picture').getAttribute('image-id');
   http('/api/likes', 'POST', { imageId: id }, renderLikes);
 }
+
+function cancelTagSearch(tag) {
+  if (tag === null) {
+    loadPictures();
+    document.getElementById('tags-search').style.visibility = 'hidden';
+  }
+  else {
+    document.getElementById('tags-search-info').innerHTML = 'search by hashtag "' + tag + '"';
+    document.getElementById('tags-search').style.visibility = 'visible';
+  }
+}
+
+//todo: reloading of information on hovers (maybe global variable)
